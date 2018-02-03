@@ -1,0 +1,807 @@
+<!doctype html>
+
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>IPI - Cours de Java - Java 330</title>
+    
+    <meta name="description" content="" />
+    <meta name="author" content="Pierre-Julien VILLOUD" />
+
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/idea.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    
+</head>
+
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="my-navbar">
+  <a class="navbar-brand" href="index.html">
+    <img src="img/ipi.jpg" width="30" height="30" alt=""> Cours Java 330
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="nav nav-pills mr-auto">
+      
+    </ul>
+    <span class="navbar-text">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <a class="btn btn-primary" href="https://github.com/pjvilloud/ipi-java-330-ex" target="_blank"><i class="fa fa-icon fa-gamepad"></i></a>
+            &nbsp;
+            <a class="btn btn-primary" href="mailto:pjvilloud@protonmail.com"><i class="fa fa-icon fa-envelope"></i></a>
+            &nbsp;
+            <a class="btn btn-primary" href="https://github.com/pjvilloud" target="_blank"><i class="fa fa-icon fa-github"></i></a>
+            &nbsp;
+            <a class="btn btn-primary" href="https://linkedin.com/pjvilloud" target="_blank"><i class="fa fa-icon fa-linkedin"></i></a>&nbsp;
+            <a class="btn btn-primary" href="#" id="numSlide">1</a>
+        </div>
+    </span>
+  </div>
+</nav>
+<div class="progress">
+  <div id="progress" class="progress-bar" style="width: 0%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="container-fluid" id="impress">
+
+    <div id="accueil" class="step slide" data-rel-x="0" data-y=0>
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container text-center">
+            <h1 class="display-3">Bienvenue !</h1>
+            <p class="lead">
+                <h2>Pierre-Julien VILLOUD</h2>
+                <div class="big-top-margin">
+                    <img src="img/pjvilloud.jpg" class="img-bienvenue rounded mx-auto d-block" alt="Pierre-Julien VILLOUD">
+                </div>
+                <div class="big-top-margin">
+                    <h3><i class="fa fa-icon fa-envelope-square"></i>&nbsp;<a href="mailto:pjvilloud@protonmail.com">pjvilloud@protonmail.com</a></h3>
+                    <h3><i class="fa fa-icon fa-github-square"></i>&nbsp;<a href="https://github.com/pjvilloud" target="_blank">https://github.com/pjvilloud</a></h3>
+                    <h3><i class="fa fa-icon fa-linkedin-square"></i>&nbsp;<a href="https://linkedin.com/pjvilloud" target="_blank">https://linkedin.com/pjvilloud</a></h3>
+                    <h3><i class="fa fa-icon fa-globe"></i>&nbsp;<a href="http://pjvilloud.github.io" target="_blank">http://pjvilloud.github.io</a></h3>
+                </div>
+            </p>
+          </div>
+        </div>
+    </div>
+
+    <div id="introduction" class="step slide">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid text-center">
+          <h1 class="display-3">Introduction</h1>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Nous avons vu dans le cours précédent comment générer dynamiquement des pages HTML avec les servlets. Pour l'instant nous avons gérer la partie HTML dans le contrôleur. Afin de respecter mieux coller au principe du <em>MVC</em>, nous allons voir les JSP.
+            </div>
+          </div>
+          <div class="container small-font">
+            <img src="img/jsp.jpeg" alt="" height="500">
+          </div>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font " role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Une page JSP est une page HTML dans laquelle on place des bouts de code Java (de plusieurs manières).
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="scriptlets" class="step slide">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid text-center">
+          <h1 class="display-3">Les scriptlets</h1>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Un <strong>scriptlet</strong> est un bout de code java placé entre <code>&lt;% %&gt;</code>. On peut placer une scriptlet dans une page à partir du moment ou elle porte l'extension <code>.jsp</code> et qu'elle est hébergée sur un serveur d'application (Tomcat par exemple).
+            </div>
+          </div>
+          <div class="container text-left small-font">
+            <pre><code class="html">&lt;html lang="en"&gt;
+  &lt;head&gt;
+      &lt;title&gt;JSP&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;h1&gt;</code><code class="jsp">   &lt;% out.println("Hello !"); %&gt;</code><code class="html">  &lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+          <div class="container-fluid little-top-margin">
+            <div class="alert alert-primary small-font " role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Une bonne pratique consisste à, dans la mesure du possible, ne mettre que les éléments qui ne sont pas du HTML pour éviter par exemple <br><code>&lt;% out.println("&lt;h1&gt;Hello !&lt;/h1&gt;"); %&gt;</code>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="scriptlets-variables" class="step slide">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid text-center">
+          <h1 class="display-3">Les objets JSP</h1>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Différents objets sont accessibles depuis une JSP.
+            </div>
+          </div>
+          <div class="container-fluid small-font text-left">
+            <table>
+              <thead>
+                <tr>
+                  <th>
+                    <p>Nom</p>
+                  </th>
+                  <th>
+                    <p>Type</p>
+                  </th>
+                  <th> 
+                    <p>Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody> 
+                <tr> 
+                  <td>
+                    <p><code>request</code></p>
+                  </td>
+                  <td>
+                    <p><code>HttpServletRequest</code></p>
+                  </td>
+                  <td>
+                    <p>Objet contenant tous les données de la requêtes HTTP initiale (paramètres...)</p>
+                  </td>
+                </tr>
+                <tr> 
+                  <td>
+                    <p><code>response</code></p>
+                  </td>
+                  <td>
+                    <p><code>HttpServletResponse</code></p>
+                  </td>
+                  <td>
+                    <p>Objet contenant toutes les données de la réponse HTTP du serveur (statut HTTP...)</p>
+                  </td>
+                </tr>
+                <tr> 
+                  <td>
+                    <p><code>out</code></p>
+                  </td>
+                  <td>
+                    <p><code>JspWriter</code></p>
+                  </td>
+                  <td>
+                    <p>Objet utilisé pour afficher des données au niveau du client avec <code>print</code></p>
+                  </td>
+                </tr>
+                <tr> 
+                  <td>
+                    <p><code>session</code></p>
+                  </td>
+                  <td>
+                    <p><code>HttpSession</code></p>
+                  </td>
+                  <td>
+                    <p>Objet gardant les informations de la session utilisateur. Il est possible de manipuler des données entre les différentes pages avec cet objet.</p>
+                  </td>
+                </tr>
+                <tr> 
+                  <td>
+                    <p><code>application</code></p>
+                  </td>
+                  <td>
+                    <p><code>ServletContext</code></p>
+                  </td>
+                  <td>
+                    <p>Objet gardant les informations au niveau de l'application globale.</p>
+                  </td>
+                </tr>
+                <tr> 
+                  <td>
+                    <p><code>config</code></p>
+                  </td>
+                  <td>
+                    <p><code>ServletConfig</code></p>
+                  </td>
+                  <td>
+                    <p>Objet contenant les informations d'initialisation de la servlet.</p>
+                  </td>
+                </tr>
+                <tr> 
+                  <td>
+                    <p><code>page</code></p>
+                  </td>
+                  <td>
+                    <p><code>this</code></p>
+                  </td>
+                  <td>
+                    <p>Objet représentant la page, équivalent du <code>this</code> de la servlet.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="scriptlets-parametres" class="step slide">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid text-center">
+          <h1 class="display-3">Les paramètres (avec <code>GET</code> ou <code>POST</code>)</h1>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;L'objet <code>request</code> permet de récupérer les éventuels paramètres passés dans l'URL (dans le cas de <code>GET</code>) ou dans la requête (dans le cas de <code>POST</code>).
+            </div>
+          </div>
+          <div class="container small-font text-left">
+            <pre><code class="html">&lt;html lang="en"&gt;
+  &lt;head&gt;
+      &lt;title&gt;JSP&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;h1&gt;</code><code class="jsp">   &lt;% 
+    //On peut utiliser ici n'importe quel code Java !
+    String nom = request.getParameter("name");
+    if(nom == null){
+      out.println("Hello " + nom + " !");
+    } else {
+      out.println("Hello !");
+    }
+   %&gt;</code><code class="html">  &lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font " role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;L'objet <code>request</code> est de la classe <code>HttpServletRequest</code> déjà vue dans le cours précédent.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="scriptlets-expressions" class="step slide">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid text-center">
+          <h1 class="display-3">Les expressions</h1>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;La notation en utilisant <code>out.print</code> à chaque fois est assez lourde ! Lorsqu'on vu uniquement afficher directement la valeur d'une variable, on peut utiliser les <em>expressions</em>
+            </div>
+          </div>
+          <div class="container small-font text-left">
+             <pre><code class="html">&lt;html lang="en"&gt;
+  &lt;head&gt;
+      &lt;title&gt;JSP&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;h1&gt; </code><code class="jsp">    Hello &lt;%= request.getParameter("nom") %&gt;</code><code class="html">  &lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font " role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Attention à tout de même tester les variables car si <code>nom</code> n'est pas renseigné, <code>null</code> sera affiché
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="scriptlets-declarations" class="step slide">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid text-center">
+          <h1 class="display-3">Les déclarations</h1>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Tous les scriptlets d'une JSP sont inclus à la compilation dans une seule méthode. Ainsi, lorqu'on déclare une variable avec les balises <code>&lt;% %&gt;</code>, la variable est locale à la méthode (et donc réinitialisée à chaque chargement de page). Il est possible de déclarer des variables et des méthodes avec les balises de déclarations <code><%! %></code>. Dans ce cas, les variables deviennent des attributs de classe et ont la même durée de vie que la classe.
+            </div>
+          </div>
+          <div class="container small-font text-left">
+            <pre><code class="html">&lt;html lang="en"&gt;
+  &lt;head&gt;
+      &lt;title&gt;JSP&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;</code><code class="jsp">  &lt;%! int compteur = 0; %&gt;
+  &lt;%  int compteur2 = 0; %&gt;
+  &lt;%! int add(int c, int c2) {
+        return c + c2;
+    }%&gt;</code><code class="jsp">&lt;%= ++compteur %&gt; &lt;%= ++compteur2 %&gt;
+    &lt;%= add(compteur,compteur2) %&gt; </code><code class="html">  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font " role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Au premier chargement de la page, la page affichera <em>1 1 2</em>, au deuxième <em>2 1 3</em> ...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="directives" class="step slide">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid text-center">
+          <h1 class="display-3">Les directives</h1>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Les directives JSP permettent d'aller plus loin que de simples scriptlets.
+            </div>
+          </div>
+          <div class="container small-font big-top-margin">
+            <ul class="list-group">
+              <li class="list-group-item">Inclure d'autres pages JSP</li>
+              <li class="list-group-item">Importer de classes issues d'autres packages</li>
+              <li class="list-group-item">Ajouter des <em>bibliothèques</em> de balises</li>
+              <li class="list-group-item">Définir des propriétés sur la page JSP</li>
+            </ul>
+          </div>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font big-top-margin" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Pour définir une directive, on utilise les balises <code><%@ %></code> et on doit les placer en haut de la page JSP (sauf la directive d'inclusion de page).
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="directives-inclusion" class="step slide">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid text-center">
+          <h1 class="display-3">Directive <code>include</code></h1>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Il est courant d'avoir le même code sur plusieurs pages HTML (menu, footer...). Pour éviter le copier-coller, il est possible d'inclure des pages JSP au sein de votre page avec la directive <code>include</code>.
+            </div>
+          </div>
+          <div class="container big-top-margin">
+            <pre><code class="jsp">&lt;%@ include file="header.jsp" %&gt;
+  ...
+&lt;%@ include file="footer.jsp" %&gt;</code></pre>
+          </div>
+          <div class="container-fluid big-top-margin">
+            <div class="alert alert-warning small-font " role="alert">
+                <i class="fa fa-icon fa-exclamation-triangle"></i>&nbsp;Attention, l'inclusion est <em>basique</em>, c'est-à-dire que le code contenu dans la JSP est simplement ajouté au reste de votre page. Si vous aviez des éléments manipulés par un contrôleur, ceux-ci ne seront pas définis.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="directives-page" class="step slide">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid text-center">
+          <h1 class="display-3">Directive <code>page</code></h1>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Il est courant d'avoir le même code sur plusieurs pages HTML (menu, footer...). Pour éviter le copier-coller, il est possible d'inclure des pages JSP à la compilation au sein de votre page avec la directive <code>include</code>.
+            </div>
+          </div>
+          <div class="container big-top-margin">
+            <pre><code class="jsp">&lt;%@ page contentType="text/html;charset=UTF-8" %&gt;
+  ...
+&lt;%@ page import "java.util.List" %&gt;</code></pre>
+          </div>
+          <div class="container-fluid big-top-margin">
+            <div class="alert alert-primary small-font " role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Ici, nous avons défini l'encodage de la page avec <code>contentType</code> et importé la classe <code>List</code> qui pourra désormais être utilisée dans des scriptlets. Il est possible aussi d'utiliser <code>&lt;jsp:include page="header.jsp" /&gt;</code> qui inclue dynamiquement à l'exécution le code.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<%@ %>
+
+    <div id="directives-taglib" class="step slide">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid text-center">
+          <h1 class="display-3">Directive <code>taglib</code></h1>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Cette directive permet d'inclure une <em>librairie de tags</em> qui pourront être utilisés dans la page.
+            </div>
+          </div>
+          <div class="container-fluid big-top-margin">
+            <pre><code class="jsp">&lt;%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %&gt;
+&lt;c:nomTag&gt;...&lt;/c:nomTag&gt;</code></pre>
+          </div>
+          <div class="container-fluid big-top-margin">
+            <div class="alert alert-primary small-font " role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Nous verrons quelques possibilités de la librairie JSTL plus tard
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="javabeans" class="step slide">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid text-center">
+          <h1 class="display-3">Les <code>JavaBeans</code></h1>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Il est possible d'utiliser les objets des classes définies par Java (Integer...) mais il est aussi possible de manipuler nos propres objets (<em>JavaBeans</em>)
+            </div>
+          </div>
+          <div class="container-fluid small-font text-left">
+            <div class="row">
+              <div class="col-lg-5">
+                <pre><code class="java">public class Vehicule {
+  private String marque;
+  private String modele;
+
+  private String getMarque(){
+    return this.marque;
+  }
+  private void setMarque(String marque){
+    this.marque = marque;
+  }
+
+  private String getModele(){
+    return this.modele;
+  }
+  private void setModele(String modele){
+    this.marque = marque;
+  }
+}</code></pre>
+              </div>
+              <div class="col-lg-7">
+                <pre><code class="jsp">//Appelle le constructeur par défaut
+&lt;jsp:useBean id="vehicule" class="com.ipiecoles.Vehicule" /&gt;
+
+//Appelle le setter de marque avec la valeur Peugeot
+&lt;jsp:setProperty name="vehicule" property="marque" value="Peugeot"/&gt;
+
+//Appelle le setter de marque avec le paramètre marque
+//dans l'URL pour GET ou dans la requête pour POST
+&lt;jsp:setProperty name="vehicule" property="marque" param="marque"/&gt;
+
+//Appelle le getter de marque qui retourne la valeur "Peugeot"
+&lt;jsp:getProperty name="vehicule" property="marque" /&gt;
+
+//L'objet sera conservé pendant toute la durée de la session d'un même 
+//utilisateur et accessible par toutes les JSP qui l'auront déclaré
+&lt;jsp:useBean id="vehicule" class="com.ipiecoles.Vehicule" scope="session"/&gt;
+//Scope peut valoir request, page (défaut), session ou application</code></pre>
+              </div>
+            </div>
+          </div>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font " role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;La portée <em>application</em> implique l'objet est partagé par toutes les pages JSP exécutées sur le serveur. La portée <em>request</em> implique la création d'un nouvel objet à chaque requête. La portée <em>page</em> implique que l'objet n'est visique que dans la servlet et a la même durée de vie que cette dernière.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="el" class="step slide">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid text-center">
+          <h1 class="display-3">Expression Language</h1>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;L'utilisation des notations <em>JavaBeans</em> est assez lourde... Nous allons donc voir <em>Expression Language</em> ou <em>EL</em> qui propose une syntaxe beaucoup plus simple et beaucoup plus riche.
+            </div>
+          </div>
+          <div class="container small-font text-left">
+            <pre><code class="java">//Soit le véhicule { marque: "Peugeot", modele: "208", puissance: 90, prixHT:12000}
+Véhicule : ${vehicule} //Affiche toString de vehicule
+
+Marque : ${vehicule.marque} //Affiche "Peugeot"
+
+Modèle : ${empty vehicule.modele ? "?" : vehicule.modele} //Affiche 208
+
+Date de mise en circulation : 
+${!empty vehicule.dateMiseCirculation ? vehicule.dateMiseCirculation : "?"}
+//Affiche ?
+
+Puissance : 
+supérieure à 80ch ? ${vehicule.puissance 80} //Affiche true
+inférieure à 50ch ? ${vehicule.puissance < 50} //Affiche false
+entre 80ch et 100ch ? ${vehicule.puissance > 80 && vehicule.puissance < 100} 
+//Affiche true
+
+Prix TTC : ${vehicule.prixHT * 1.2} //Affiche 14400</code></pre></div>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font " role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Cette syntaxe permet également d'effectuer des tests simples. A noter que <code>==</code> appelle <code>equals()</code> et <code>&gt; ou &lt;</code> utilise <code>compareTo()</code>. Il n'y a pas de <code>null</code> en <em>EL</em>, si un objet est <code>null</code>, rien ne sera affiché.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="el-collections" class="step slide">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid text-center">
+          <h1 class="display-3">Collections</h1>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;On peut également manipuler des collections avec <em>EL</em>
+            </div>
+          </div>
+          <div class="container small-font text-left">
+            <pre><code class="java">//Si vehicules est un Vehicule[]
+${vehicules[0].marque} ${vehicules['0'].marque} ${vehicules["0"].marque} 
+
+//Si vehicules est une List&lt;Vehicule&gt;, idem ci-dessus +
+${vehicules.get(0).marque} 
+
+//Si vehicules est une Map, la syntaxe est analogue à celle de la List
+//mais on remplace l'indice par la clé de la map.
+
+Modèle : ${empty vehicule.modele ? "?" : vehicule.modele} //Affiche 208
+
+Date de mise en circulation : 
+${!empty vehicule.dateMiseCirculation ? vehicule.dateMiseCirculation : "?"}
+//Affiche ?
+
+Puissance : 
+supérieure à 80ch ? ${vehicule.puissance 80} //Affiche true
+inférieure à 50ch ? ${vehicule.puissance < 50} //Affiche false
+entre 80ch et 100ch ? ${vehicule.puissance > 80 && vehicule.puissance < 100} 
+//Affiche true
+
+Prix TTC : ${vehicule.prixHT * 1.2} //Affiche 14400</code></pre></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="el-objets" class="step slide">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid text-center">
+          <h1 class="display-3">Les objets <em>EL</em></h1>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Tous les objets EL (sauf <code>pageContext</code>) sont des <code>Map</code> permettant l'accès aux propriétés avec <code>nomObjet.nomParametre</code>.
+            </div>
+          </div>
+          <div class="container small-font text-left">
+            <table>
+              <thead>
+                <tr>
+                  <th>
+                    <p>Nom</p>
+                  </th>
+                  <th> 
+                    <p>Description</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody> 
+                <tr> 
+                  <td>
+                    <p><code>pageContext</code></p>
+                  </td>
+                  <td>
+                    <p>Objet permettant d'accéder à plusieurs objets JSP (request, response...)</p>
+                  </td>
+                </tr>
+                <tr> 
+                  <td>
+                    <p><code>pageScope</code>, <code>sessionScope</code>, <code>requestScope</code> et <code>applicationScope</code></p>
+                  </td>
+                  <td>
+                    <p>Map contenant les attributs de portée page, session, requête et application.</p>
+                  </td>
+                </tr>
+                <tr> 
+                  <td>
+                    <p><code>header</code> et <code>headerValues</code></p>
+                  </td>
+                  <td>
+                    <p>Map contenant les valeurs des entêtes de la requête HTTP.</p>
+                  </td>
+                </tr>
+                <tr> 
+                  <td>
+                    <p><code>param</code> et <code>paramValues</code></p>
+                  </td>
+                  <td>
+                    <p>Map contenant les valeurs des paramètres de la requête.</p>
+                  </td>
+                </tr>
+                <tr> 
+                  <td>
+                    <p><code>initParam</code></p>
+                  </td>
+                  <td>
+                    <p>Map contenant les paramètres d'initialisation du fichier <code>web.xml</code>.</p>
+                  </td>
+                </tr>
+                <tr> 
+                  <td>
+                    <p><code>cookie</code></p>
+                  </td>
+                  <td>
+                    <p>Map contenant les éventuels cookies.</p>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="jstl" class="step slide">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid text-center">
+          <h1 class="display-3">JSTL</h1>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;JSTL, pour <em>JSP Standard Tag Library</em> contient de nombreux tags permettant de faire des itérations, des conditions et autres fonctionnalités intéressantes pour éviter d'écrire directement du Java dans les JSP.
+            </div>
+          </div>
+          <div class="container small-font big-top-margin">
+            <ul class="list-group">
+              <li class="list-group-item">Les tags de base</li>
+              <li class="list-group-item">Les tags de formattage</li>
+              <li class="list-group-item">Les fonctions JSTL</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="jstl-core" class="step slide">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid text-center">
+          <h1 class="display-3">Les tags de base de <code>core</code></h1>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Voici les tags de base permettant de manipuler des variables et d'effectuer des tests de conditions.
+            </div>
+          </div>
+          <div class="container-fluid small-font text-left">
+            <pre><code class="html">&lt;%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %&gt;
+
+&lt;c:out value="${vehicule.description}" default="Pas de description" escapeXml=false /&gt;
+
+&lt;c:set var = "vehiculeChoisi" scope = "session" value = "vehicule"/&gt;
+&lt;c:remove var = "vehiculeChoisi" /&gt;
+
+&lt;c:if test = "${vehicule.puissance > 130}"&gt;
+   Malus écologique
+&lt;/c:if&gt;
+
+&lt;c:choose&gt;
+  &lt;c:when test = "${vehicule.puissance &lt;= 50}"&gt;
+    Catégorie 1
+  &lt;/c:when&gt;
+  &lt;c:when test = "${vehicule.puissance &lt;= 100}"&gt;
+    Catégorie 2
+  &lt;/c:when&gt;
+  &lt;c:otherwise&gt;
+    Catégorie 3
+  &lt;/c:otherwise&gt;
+&lt;/c:choose&gt;
+</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="jstl-core2" class="step slide">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid text-center">
+          <h1 class="display-3">Les tags de base de <code>core</code> (2)</h1>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Voici les tags de base permettant d'effectuer des boucles
+            </div>
+          </div>
+          <div class="container-fluid small-font text-left">
+            <pre><code class="html">&lt;%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %&gt;
+
+&lt;c:forEach var = "i" begin = "1" end = "5"&gt;
+   Véhicule &lt;c:out value = "${i}"/&gt;
+&lt;/c:forEach&gt;
+//Véhicule 1 Véhicule 2 Véhicule 3 Véhicule 4 Véhicule 5
+
+&lt;c:forTokens items = "Peugeot,Citroën,Renault" delims = "," var = "marque"&gt;
+   &lt;c:out value = "${marque}"/&gt;&lt;p&gt;
+&lt;/c:forTokens&gt;
+//Peugeot Citroën Renault
+
+&lt;c:url value = "/recherche.jsp" var = "myURL"&gt;
+   &lt;c:param name = "marque" value = "Peugeot"/&gt;
+   &lt;c:param name = "modele" value = "208"/&gt;
+&lt;/c:url&gt;
+
+&lt;c:redirect url = "http://www.google.com"/&gt;
+
+</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="jstl-fmt" class="step slide">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid text-center">
+          <h1 class="display-3">Les tags de formatage <code>fmt</code></h1>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;La bibliothèque <code>fmt</code> permet d'effectuer des opération de formattage sur des nombres.
+            </div>
+          </div>
+          <div class="container-fluid small-font text-left">
+            <pre><code class="html">&lt;%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %&gt;
+&lt;c:set var = "prix" value = "12000.2309" /&gt;
+&lt;c:set var = "percentage" value = "0.156" /&gt;
+&lt;fmt:setLocale value = "fr_FR"/&gt;
+&lt;fmt:formatNumber value = "${prix}" type = "currency" currencySymbol="€"/&gt; 12 000,23 €      
+&lt;fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${prix}" /&gt; 12 000,231
+&lt;fmt:formatNumber type = "number" groupingUsed = "false" value = "${prix}" /&gt; 12000,231
+&lt;fmt:formatNumber type = "number" pattern = "###.###E0" value = "${prix}" /&gt; 12,0002E3
+&lt;fmt:formatNumber type = "percent" maxIntegerDigits="3" value = "${percentage}" /&gt; 16 %
+&lt;fmt:formatNumber type = "percent" minFractionDigits = "2" value = "${percentage}" /&gt; 15,60 %
+&lt;fmt:formatNumber type = "percent" maxIntegerDigits = "1" value = "${percentage}" /&gt; 6 %
+
+            </code></pre>
+          </div>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font " role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Toutes les possibilités offertes par <code>fmt:formatNumber</code> tag sont répertoriées <a href="https://www.tutorialspoint.com/jsp/jstl_format_formatnumber_tag.htm">ici</a>. il y a également <a href="https://www.tutorialspoint.com/jsp/jstl_format_parsenumber_tag.htm">ici</a> les informations sur le tag <code>fmt:parseNumber</code> qui fait l'inverse.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="jstl-fmt2" class="step slide">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid text-center">
+          <h1 class="display-3">Les tags de formatage (2)</h1>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;La bibliothèque <code>fmt</code> permet d'effectuer des opération de formattage sur des dates.
+            </div>
+          </div>
+          <div class="container-fluid small-font text-left big-top-margin">
+            <pre><code class="html">&lt;c:set var="now" value="&lt;%=new java.util.Date()%&gt;"/&gt;
+&lt;fmt:setLocale value = "fr_FR"/&gt;
+&lt;fmt:formatDate type = "time" value = "${now}" /&gt; 17:36:55
+&lt;fmt:formatDate type = "date" value = "${now}" /&gt; 2 févr. 2018
+&lt;fmt:formatDate type = "both" value = "${now}" /&gt; 2 févr. 2018 17:36:55
+&lt;fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short" value = "${now}" /&gt; 02/02/18 17:36
+&lt;fmt:formatDate type = "both" dateStyle = "medium" timeStyle = "medium" value = "${now}" /&gt; 2 févr. 2018 17:36:55
+&lt;fmt:formatDate type = "both" dateStyle = "long" timeStyle = "long" value = "${now}" /&gt; 2 février 2018 17:36:55 CET
+&lt;fmt:formatDate pattern = "yyyy-MM-dd" value = "${now}" /&gt; 2018-02-02</code></pre> </div>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font big-top-margin" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Toutes les possibilités offertes par <code>fmt:formatDate</code> tag sont répertoriées <a href="https://www.tutorialspoint.com/jsp/jstl_format_formatdate_tag.htm">ici</a>. il y a également <a href="https://www.tutorialspoint.com/jsp/jstl_format_parsedate_tag.htm">ici</a> les informations sur le tag <code>fmt:parseDate</code> qui fait l'inverse.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+
+<script src="js/impress.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/highlight.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/script.js"></script>
+

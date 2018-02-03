@@ -1,2 +1,2 @@
-# ipi-java-330-cours
-Cours de Java, module 330 pour l'IPI
+# ipi-java-320-cours
+Cours de Java, module 320 pour l'IPI
