@@ -102,6 +102,51 @@
       </div>
     </div>
     
+    <div id="spring" class="step slide">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid text-center">
+          <h1 class="display-3">Utilisation avec Spring</h1>
+          <div class="container-fluid">
+            <div class="alert alert-primary small-font" role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;On peut utiliser les contrôleurs de Spring avec les JSP afin de simplifier au maximum les JSP.
+            </div>
+          </div>
+          <div class="container-fluid text-left small-font big-top-margin">
+            <div class="row">
+              <div class="col-6">
+                <code>IndexController.java</code>
+                <pre><code class="java">@Controller
+public class IndexController {
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String index(Map<String, Object> model) {
+        model.put("nom", "IPI");
+        return "index";
+    }
+
+}</code></pre>
+              </div> 
+              <div class="col-6">
+                <code>index.jsp</code>
+                <pre><code class="html">&lt;html lang="en"&gt;
+  &lt;head&gt;
+      &lt;title&gt;JSP&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;h1&gt;Hello ${nom} !&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre></div> 
+            </div>
+          </div>
+          <div class="container-fluid big-top-margin">
+            <div class="alert alert-primary small-font " role="alert">
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;On garde le principe de mapping d'url de Spring, on précise simplement le template JSP utilisé en retour de la fonction, ici <code>index</code>. Lorsqu'on accède à la page <code>localhost:8080</code> cela affiche <code>Hello IPI !</code>. On peut bien sûr accéder directement aux pages JSP de la même manière qu'avec PHP, mais dans ce cas l'ensemble du code doit se situer dans les JSP.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div id="scriptlets" class="step slide">
       <div class="jumbotron jumbotron-fluid">
         <div class="container-fluid text-center">
@@ -123,7 +168,7 @@
           </div>
           <div class="container-fluid little-top-margin">
             <div class="alert alert-primary small-font " role="alert">
-                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Une bonne pratique consisste à, dans la mesure du possible, ne mettre que les éléments qui ne sont pas du HTML pour éviter par exemple <br><code>&lt;% out.println("&lt;h1&gt;Hello !&lt;/h1&gt;"); %&gt;</code>.
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;Une bonne pratique consiste, dans la mesure du possible, à ne mettre que les éléments qui ne sont pas du HTML pour éviter par exemple <br><code>&lt;% out.println("&lt;h1&gt;Hello !&lt;/h1&gt;"); %&gt;</code>.
             </div>
           </div>
         </div>
@@ -281,7 +326,7 @@
           <h1 class="display-3">Les expressions</h1>
           <div class="container-fluid">
             <div class="alert alert-primary small-font" role="alert">
-                <i class="fa fa-icon fa-info-circle"></i>&nbsp;La notation en utilisant <code>out.print</code> à chaque fois est assez lourde ! Lorsqu'on vu uniquement afficher directement la valeur d'une variable, on peut utiliser les <em>expressions</em>
+                <i class="fa fa-icon fa-info-circle"></i>&nbsp;La notation en utilisant <code>out.print</code> à chaque fois est assez lourde ! Lorsqu'on veut uniquement afficher directement la valeur d'une variable, on peut utiliser les <em>expressions</em>
             </div>
           </div>
           <div class="container small-font text-left">
